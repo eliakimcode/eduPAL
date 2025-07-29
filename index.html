@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eduPAL | Your Global Hub for Learning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./index.css">
+
+</head>
+
+<body>
+
+    <!-- =================================================================================
+     ======================== HEADER ============================== -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="./img/logo.png" class="logo" alt="eduPAL Logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="./trending_courses.html" class="nav-link">Trending Courses</a></li>
+                    <li><a href="./all_courses.html" class="nav-link">All Courses</a></li>
+                    <li><a href="" target="_blank" rel="noopener" class="nav-link">Pal
+                            Library</a></li>
+                    <li><a href="" target="_blank" rel="noopener" class="nav-link">eduPAL Basic</a></li>
+                    <li><a href="./about.html" class="nav-link">About</a></li>
+                    <li><a href="./contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!--  ================== HUMBURGGER =================================== -->
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+
+
+
+
+
+
+    <!-- ========================================================================================================
+     ===============================================================================================================
+     ================= MAIN =======================================================================================
+     =============================================================================== -->
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>Find Your Perfect Online Course, Simplified.</h1>
+                <p>Compare and explore quality courses from leading platforms worldwide, all in one place, with honest
+                    insights.</p>
+                <a href="#course-categories" class="btn btn-primary">Explore Courses Now</a>
+            </div>
+        </section>
+
+
+        <!-- =========================================================================
+             ===============  CATEGORIES SECTION ========================================== -->
+        <section id="course-categories" class="categories-section">
+            <div class="container">
+                <div class="partners">
+                    <h2 class="section-title">Our Top Partners</h2>
+                    <div class="partner-img">
+                        <img src="./img/linkedin_learning.webp" alt="">
+                        <img src="./img/coursera.png" alt="">
+                        <img src="./img/hp_life.webp" style="border-radius: 15px;" alt="">
+                        <img src="./img/udemy.png" alt="">
+                    </div>
+                </div>
+
+
+                <div class="category-dropdown-wrapper">
+                    <label for="course-category" class="sr-only">Select a Category</label>
+                    <select id="course-category">
+                        <option value="">Browse All Categories</option>
+                        <option value="it-tech">IT & Tech</option>
+                        <option value="business-entrepreneurship">Business & Entrepreneurship</option>
+                        <option value="health">Health</option>
+                        <option value="faith-life-values">Faith & Life Values</option>
+                        <option value="cybersecurity">Cybersecurity</option>
+                        <option value="data">Data</option>
+                        <option value="programming">Programming</option>
+                        <option value="ai">Artificial Intelligence</option>
+                        <option value="cloud-computing">Cloud Computing</option>
+                        <option value="communication-language">Communication & Language</option>
+                        <option value="networking">Networking</option>
+                        <!-- Add more categories as needed -->
+                    </select>
+                </div>
+
+
+            </div>
+        </section>
+
+
+
+        <!-- =============================================================================
+         =================== COURSE LISTS SECTION =============================================== -->
+        <section class="course-lists-section">
+            <div class="container">
+                <!-- Example Course List Section 1 -->
+                <h2 class="section-title">Top 10 Courses for Level 100 Computer Science and IT Students</h2>
+                <div class="course-grid">
+                    <!-- Course Card 1 -->
+                    <div class="course-card">
+                        <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/XDP/XDP~COURSE!~introduction-to-computer-programming/XDP~COURSE!~introduction-to-computer-programming.jpeg"
+                            alt="Introduction to Programming">
+                        <div class="card-content">
+                            <h3>Introduction to Programming</h3>
+                            <p class="platform-name">Platform: Coursera</p>
+                            <p class="course-info">Type: Specialization | Hours: 40 | Category: Programming</p>
+                            <p class="short-desc">A foundational course covering basic programming concepts and logic,
+                                perfect for beginners.</p>
+                            <div class="rating">★★★★★ (Our Review)</div>
+                            <a href="https://www.coursera.org/learn/programming-introduction?action=enroll"
+                                rel="noopener" target="_blank" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 2 -->
+                    <div class="course-card">
+                        <img src="https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2022_02_Blockchain-1p1.jpg"
+                            alt="Networking Basics">
+                        <div class="card-content">
+                            <h3>Networking Basics</h3>
+                            <p class="platform-name">Platform: Cisco NetAcad</p>
+                            <p class="course-info">Type: Course | Hours: 22 | Category: Networking</p>
+                            <p class="short-desc">Understand the fundamentals of computer networking and internet
+                                protocols.</p>
+                            <div class="rating">★★★★☆ (Our Review)</div>
+                            <a href="https://www.netacad.com/courses/networking-basics?courseLang=en-US" rel="noopener"
+                                target="_blank" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 3 -->
+                    <div class="course-card">
+                        <img src="https://developers.google.com/static/web/images/social-webfu-16x9.png"
+                            alt="Web Development Fundamentals">
+                        <div class="card-content">
+                            <h3>Web Development Fundamentals</h3>
+                            <p class="platform-name">Platform: Alison</p>
+                            <p class="course-info">Type: Diploma | Hours: 15-20 | Category: Programming</p>
+                            <p class="short-desc">Learn HTML, CSS, and JavaScript to build your first dynamic websites.
+                            </p>
+                            <div class="rating">★★★★☆ (Our Review)</div>
+                            <a href="https://alison.com/course/web-development-with-html-and-css-for-beginners"
+                                rel="noopener" target="_blank" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 4 -->
+                    <div class="course-card">
+                        <img src="https://www.fsm.ac.in/blog/wp-content/uploads/2022/07/FUqHEVVUsAAbZB0-1024x580.jpg"
+                            alt="Introduction to Data Science">
+                        <div class="card-content">
+                            <h3>Introduction to Data Science</h3>
+                            <p class="platform-name">Platform: Coursera | IBM</p>
+                            <p class="course-info">Type: Specialization | Hours: 300 | Category: Data</p>
+                            <p class="short-desc">Explore the basics of data science, including data analysis and
+                                visualization.</p>
+                            <div class="rating">★★★★★ (Our Review)</div>
+                            <a href="https://www.coursera.org/specializations/introduction-data-science" target="_blank"
+                                rel="noopener" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 5 -->
+                    <div class="course-card">
+                        <img src="https://www.whizlabs.com/blog/wp-content/uploads/2020/05/introduction-to-cybersecurity.png"
+                            alt="Introduction to Cybersecurity">
+                        <div class="card-content">
+                            <h3>Introduction to Cybersecurity</h3>
+                            <p class="platform-name">Platform: Cisco NetAcad</p>
+                            <p class="course-info">Type: Course | Hours: 6 | Category: Cybersecurity</p>
+                            <p class="short-desc">Gain fundamental knowledge in cybersecurity concepts and threats.</p>
+                            <div class="rating">★★★★☆ (Our Review)</div>
+                            <a href="https://www.netacad.com/courses/introduction-to-cybersecurity?courseLang=en-US"
+                                rel="noopener" target="_blank" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 6 -->
+                    <div class="course-card">
+                        <img src="https://www.certybox.com/wp-content/webpc-passthru.php?src=https://www.certybox.com/wp-content/uploads/2021/03/cloud-computing-fundamentals_optimized-470x300.jpg&nocache=1"
+                            alt="Cloud Computing Fundamentals">
+                        <div class="card-content">
+                            <h3>Cloud Computing Fundamentals</h3>
+                            <p class="platform-name">Platform: edX</p>
+                            <p class="course-info">Type: Professional Certificate Hours: 30 | Category: Cloud Computing
+                            </p>
+                            <p class="short-desc">Understand the core concepts of cloud computing and its major
+                                providers.</p>
+                            <div class="rating">★★★★★ (Our Review)</div>
+                            <a href="https://www.edx.org/certificates/professional-certificate/ec-council-cybersecurity-essentials?index=product&queryId=934f670042b22f4c156885e19435ecf1&position=3"
+                                target="_blank" rel="noopener" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Example Course List Section 2 -->
+                <h2 class="section-title">Most Taken Courses of 2025 (Jan - June)</h2>
+                <div class="course-grid">
+                    <!-- Course Card 7 -->
+                    <div class="course-card">
+                        <img src="https://roselladigital.com/wp-content/uploads/2023/03/Fundamentals-of-digital-marketing.jpg"
+                            alt="Fundamentals of Digital Marketing and E-Commerce">
+                        <div class="card-content">
+                            <h3>Fundamentals of Digital Marketing and E-Commerce</h3>
+                            <p class="platform-name">Platform: Coursera</p>
+                            <p class="course-info">Type: Specialization | Hours: 12 | Category: Business &
+                                Entrepreneurship</p>
+                            <p class="short-desc">Learn key strategies for online marketing, social media, and SEO.</p>
+                            <div class="rating">★★★★★ (Our Review)</div>
+                            <a href="https://www.coursera.org/learn/foundations-of-digital-marketing-and-e-commerce"
+                                target="_blank" rel="noopener" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                    <!-- Course Card 8 -->
+                    <div class="course-card">
+                        <img src="https://pmglobalinstitute.com/wp-content/uploads/2024/01/Untitled-design-26.webp"
+                            alt="Business Fundamentals: Project Management">
+                        <div class="card-content">
+                            <h3>Business Fundamentals: Project Management</h3>
+                            <p class="platform-name">Platform: FutureLearn</p>
+                            <p class="course-info">Type: Short Course | Hours: 10 | Category: Business &
+                                Entrepreneurship</p>
+                            <p class="short-desc">Master the essential skills for planning, executing, and closing
+                                projects successfully.</p>
+                            <div class="rating">★★★★☆ (Our Review)</div>
+                            <a href="https://www.futurelearn.com/courses/project-management" target="_blank"
+                                rel="noopener" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                    <!-- Course Card 9 -->
+                    <div class="course-card">
+                        <img src="https://school.cabar.asia/wp-content/uploads/2021/12/ai_cover200-1024x553.png"
+                            alt="Introduction to Modern AI">
+                        <div class="card-content">
+                            <h3>Introduction to Modern AI</h3>
+                            <p class="platform-name">Platform: Cisco</p>
+                            <p class="course-info">Type: Course | Hours: 6 | Category: Artificial Intelligence
+                            </p>
+                            <p class="short-desc">Explore the foundational concepts of Artificial Intelligence and its
+                                applications.</p>
+                            <div class="rating">★★★★★ (Our Review)</div>
+                            <a href="https://www.netacad.com/courses/introduction-to-modern-ai?courseLang=en-US"
+                                target="_blank" rel="noopener" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                    <!-- Course Card 10 -->
+                    <div class="course-card">
+                        <img src="https://www.eskillworld.com/tmp/cache/usermedia/student_uploads/effective_communication-400x300.jpg"
+                            alt="The Art of Effective Communication">
+                        <div class="card-content">
+                            <h3>The Art of Effective Communication</h3>
+                            <p class="platform-name">Platform: Alison</p>
+                            <p class="course-info">Type: Learning Path | Hours: 15 | Category: Communication & Language
+                            </p>
+                            <p class="short-desc">Enhance your verbal and non-verbal communication for professional
+                                success.</p>
+                            <div class="rating">★★★★☆ (Our Review)</div>
+                            <a href="https://alison.com/course/the-art-of-effective-communication" target="_blank"
+                                rel="noopener" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Most Paid Certifications Section -->
+                <h2 class="section-title">Most Paid Certifications of 2025</h2>
+                <div class="course-grid">
+                    <!-- Course Card 11 -->
+                    <div class="course-card">
+                        <img src="https://mwcc.edu/wp-content/uploads/2020/09/Google-IT-Professional-Certificate-Logo.png"
+                            alt="Google IT Support Professional Certificate">
+                        <div class="card-content">
+                            <h3>Google IT Support Professional Certificate</h3>
+                            <p class="platform-name">Platform: Coursera</p>
+                            <p class="course-info">Type: Professional Cert | Hours: 180 | Category: IT & Tech</p>
+                            <p class="short-desc">Gain in-demand skills for an entry-level IT support role.</p>
+                            <div class="rating">★★★★★ (Our Review)</div>
+                            <a href="https://www.coursera.org/professional-certificates/google-it-support"
+                                rel="noopener" target="_blank" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                    <!-- Course Card 12 -->
+                    <div class="course-card">
+                        <img src="https://360digit.b-cdn.net/uploads/blog/002565e2459b093316cecc3daada8d4d.png"
+                            alt="IBM Data Science Professional Certificate">
+                        <div class="card-content">
+                            <h3>IBM Data Science Professional Certificate</h3>
+                            <p class="platform-name">Platform: Coursera</p>
+                            <p class="course-info">Type: Professional Cert | Hours: 240 | Category: Data</p>
+                            <p class="short-desc">Master data science skills with Python, SQL, and machine learning.</p>
+                            <div class="rating">★★★★★ (Our Review)</div>
+                            <a href="https://www.coursera.org/professional-certificates/ibm-data-science" rel="noopener"
+                                target="_blank" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                    <!-- Course Card 13 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/FFC107/1A2C3D?text=Course+Image+13"
+                            alt="CompTIA A+ Certification Prep">
+                        <div class="card-content">
+                            <h3>CompTIA A+ Certification Prep</h3>
+                            <p class="platform-name">Platform: Udemy (example)</p>
+                            <p class="course-info">Type: Certification Prep | Hours: 90 | Category: IT & Tech</p>
+                            <p class="short-desc">Prepare for the industry-recognized CompTIA A+ certification exam.</p>
+                            <div class="rating">★★★★☆ (Our Review)</div>
+                            <a href="https://www.udemy.com/course/comptia-a-plus-certification-prep" target="_blank"
+                                rel="noopener" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Must-Take Courses for Nursing Students Section -->
+                <h2 class="section-title">Must-Take Courses for Nursing Students</h2>
+                <div class="course-grid">
+                    <!-- Course Card 14 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/FF9800/FFFFFF?text=Course+Image+14"
+                            alt="Introduction to Public Health">
+                        <div class="card-content">
+                            <h3>Introduction to Public Health</h3>
+                            <p class="platform-name">Platform: OpenLearn</p>
+                            <p class="course-info">Type: Free Course | Hours: 10 | Category: Health</p>
+                            <p class="short-desc">Explore the core concepts of public health and its impact on
+                                communities.</p>
+                            <div class="rating">★★★★☆ (Our Review)</div>
+                            <a href="https://www.open.edu/openlearn/health-sports-psychology/public-health/introduction-public-health"
+                                target="_blank" rel="noopener" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                    <!-- Course Card 15 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/3366CC/FFFFFF?text=Course+Image+15"
+                            alt="Human Anatomy and Physiology">
+                        <div class="card-content">
+                            <h3>Human Anatomy and Physiology</h3>
+                            <p class="platform-name">Platform: edX</p>
+                            <p class="course-info">Type: University Course | Hours: 80 | Category: Health</p>
+                            <p class="short-desc">A comprehensive study of the human body's structure and function.</p>
+                            <div class="rating">★★★★★ (Our Review)</div>
+                            <a href="https://www.edx.org/course/human-anatomy-and-physiology" target="_blank"
+                                rel="noopener" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                    <!-- Course Card 16 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/4CAF50/FFFFFF?text=Course+Image+16"
+                            alt="Medical Terminology">
+                        <div class="card-content">
+                            <h3>Medical Terminology</h3>
+                            <p class="platform-name">Platform: Alison</p>
+                            <p class="course-info">Type: Certificate | Hours: 5-8 | Category: Health</p>
+                            <p class="short-desc">Learn essential medical vocabulary for healthcare professionals.</p>
+                            <div class="rating">★★★☆☆ (Our Review)</div>
+                            <a href="https://alison.com/courses/medical-terminology" target="_blank" rel="noopener"
+                                class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Take These Courses Before You Complete Your Uni Section -->
+                <h2 class="section-title">Take These Courses Before You Complete Your Uni</h2>
+                <div class="course-grid">
+                    <!-- Course Card 17 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/3366CC/FFFFFF?text=Course+Image+17"
+                            alt="Foundations of Cybersecurity">
+                        <div class="card-content">
+                            <h3>Foundations of Cybersecurity</h3>
+                            <p class="platform-name">Platform: edX</p>
+                            <p class="course-info">Type: Professional Cert | Hours: 100 | Category: Cybersecurity</p>
+                            <p class="short-desc">Essential knowledge for protecting digital systems and data.</p>
+                            <div class="rating">★★★★★ (Our Review)</div>
+                            <a href="https://www.edx.org/course/foundations-of-cybersecurity" target="_blank"
+                                rel="noopener" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                    <!-- Course Card 18 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/4CAF50/FFFFFF?text=Course+Image+18"
+                            alt="Critical Thinking Skills">
+                        <div class="card-content">
+                            <h3>Critical Thinking Skills</h3>
+                            <p class="platform-name">Platform: LinkedIn Learning</p>
+                            <p class="course-info">Type: Learning Path | Hours: 15 | Category: Communication & Language
+                            </p>
+                            <p class="short-desc">Develop analytical and problem-solving abilities crucial for any
+                                career.</p>
+                            <div class="rating">★★★★☆ (Our Review)</div>
+                            <a href="https://www.linkedin.com/learning/critical-thinking-skills" target="_blank"
+                                rel="noopener" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                    <!-- Course Card 19 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/FFC107/1A2C3D?text=Course+Image+19"
+                            alt="Introduction to Entrepreneurship">
+                        <div class="card-content">
+                            <h3>Introduction to Entrepreneurship</h3>
+                            <p class="platform-name">Platform: HP LIFE</p>
+                            <p class="course-info">Type: Free Course | Hours: 5 | Category: Business & Entrepreneurship
+                            </p>
+                            <p class="short-desc">Learn the basics of starting and running your own business.</p>
+                            <div class="rating">★★★★☆ (Our Review)</div>
+                            <a href="https://www.life-global.org/courses/introduction-to-entrepreneurship"
+                                rel="noopener" target="_blank" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+
+
+
+
+
+
+    <div class="chatbot" style="position: fixed; right: 100px; bottom: 100px; z-index: 1000">
+        <a href="./edupal_chat.html" style="font-size: 50px; color: blue; display: flex; flex-direction: column; justify-content: center;">
+            <i class="fa-solid fa-comments"></i>
+            <span style="font-size: 15px;">Talk about UENR</span>
+        </a>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- =============================================================================
+     ================== FOOTER =============================================== -->
+    <footer class="main-footer">
+        <div class="container">
+            <img src="./img/logo.png" class="logo" alt="eduPAL Logo">
+            <p>&copy; <span id="current-year"></span> eduPAL. All rights reserved.</p>
+            <p class="disclosure">This site contains affiliate links. We may earn a commission if you make a purchase
+                through these links, at no extra cost to you. <a href="affiliate-disclosure.html">Learn more.</a></p>
+            <div class="footer-links">
+                <a href="./about.html">About Us</a>
+                <a href="./about.html#privacy-policy">Privacy Policy</a>
+                <a href="./about.html#terms-of-use">Terms of Service</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+    <!-- SCRIPTS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Smooth scroll for "Explore Courses Now" button
+            const exploreBtn = document.querySelector('.hero-section .btn-primary');
+            if (exploreBtn) {
+                exploreBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = e.target.getAttribute('href');
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Basic Mobile Navigation Toggle
+            const navToggle = document.querySelector('.nav-toggle');
+            const mainNav = document.querySelector('.main-nav');
+
+            if (navToggle && mainNav) {
+                navToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                    navToggle.classList.toggle('open'); // Toggles a class for hamburger animation
+                });
+                // Close nav when a link is clicked (useful for single-page navigation or if nav covers content)
+                mainNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                            navToggle.classList.remove('open');
+                        }
+                    });
+                });
+            }
+
+            // Future: Category filter logic (placeholder for now)
+            // In a static HTML/CSS/JS site, implementing a live filter would be complex
+            // and might involve hiding/showing elements or redirecting to dynamic pages.
+            // For now, this just logs the selection.
+
+        });
+    </script>
+
+</body>
+
+</html>

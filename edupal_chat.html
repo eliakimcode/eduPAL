@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eduPAL Chatbot</title>
+    <!-- Tone.js CDN for sound effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+    <style>
+        /* Custom scrollbar for chat window */
+        #chat-window::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #chat-window::-webkit-scrollbar-track {
+            background: rgba(241, 241, 241, 0.5);
+            /* Translucent track */
+            border-radius: 10px;
+        }
+
+        #chat-window::-webkit-scrollbar-thumb {
+            background: rgba(136, 136, 136, 0.7);
+            /* Translucent thumb */
+            border-radius: 10px;
+        }
+
+        #chat-window::-webkit-scrollbar-thumb:hover {
+            background: rgba(85, 85, 85, 0.8);
+            /* Translucent thumb on hover */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: url(./img/bot_bg.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+            box-sizing: border-box;
+            /* Include padding in element's total width and height */
+        }
+
+        /* Main Chatbot Container Styling */
+        #app {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 600px;
+            /* Adjusted max-width for a single panel layout */
+            height: 90vh;
+            max-height: 800px;
+            background-color: rgba(255, 255, 255, 0.15);
+            /* Semi-transparent white background */
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            /* Light border for glass effect */
+            backdrop-filter: blur(10px) brightness(1.1);
+            /* Glass blur effect */
+            -webkit-backdrop-filter: blur(10px) brightness(1.1);
+            /* For Safari */
+            box-sizing: border-box;
+            /* Crucial for correct sizing with padding */
+        }
+
+        /* Animation for new messages */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-enter-active {
+            animation: fadeInUp 0.3s ease-out forwards;
+        }
+
+        /* Chatbot Section */
+        #chatbot-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            width: 100%;
+            /* Ensure it takes full width */
+            height: 100%;
+            /* Ensure it takes full height of its flex parent */
+            box-sizing: border-box;
+            /* Crucial for correct sizing with padding */
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            /* Equivalent to text-gray-800 */
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Chat Window */
+        #chat-window {
+            flex-grow: 1;
+            background-color: rgba(249, 250, 251, 0.7);
+            /* Semi-transparent background for chat window */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+            border: 1px solid #e5e7eb;
+            /* Equivalent to border-gray-200 */
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+            /* Equivalent to shadow-inner */
+            min-height: 0;
+            /* Important for flex-grow with overflow to work */
+        }
+
+        /* Input Area */
+        .input-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            /* Equivalent to space-x-3 */
+            width: 100%;
+            /* Ensure it spans full width */
+        }
+
+        #user-input {
+            flex-grow: 1;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            /* Equivalent to border-gray-300 */
+            border-radius: 0.5rem;
+            /* Equivalent to rounded-lg */
+            color: #374151;
+            /* Equivalent to text-gray-700 */
+            outline: none;
+            /* Equivalent to focus:outline-none */
+            transition: box-shadow 0.2s, border-color 0.2s;
+            /* For focus ring effect */
+        }
+
+        #user-input:focus {
+            border-color: #3b82f6;
+            /* Equivalent to focus:ring-blue-500 */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+            /* Equivalent to focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 */
+        }
+
+        #send-button {
+            background-color: #059669;
+            /* Equivalent to bg-green-600 */
+            color: white;
+            padding: 0.75rem 1.25rem;
+            /* Equivalent to py-3 px-5 */
+            border-radius: 0.5rem;
+            /* Equivalent to rounded-lg */
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            /* Equivalent to shadow-md */
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            /* Equivalent to transition duration-300 ease-in-out */
+            outline: none;
+            /* Equivalent to focus:outline-none */
+        }
+
+        #send-button:hover {
+            background-color: #047857;
+            /* Equivalent to hover:bg-green-700 */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Equivalent to hover:shadow-lg */
+        }
+
+        #send-button:focus {
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.5);
+            /* Equivalent to focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 */
+        }
+
+        /* Loading Indicator */
+        #loading-indicator {
+            text-align: center;
+            color: #2563eb;
+            /* Equivalent to text-blue-600 */
+            margin-top: 0.75rem;
+            /* Equivalent to mt-3 */
+            display: none;
+            /* Hidden by default */
+            justify-content: center;
+            /* Center content */
+            align-items: center;
+            /* Center content */
+        }
+
+        #loading-indicator .spinner {
+            animation: spin 1s linear infinite;
+            margin-right: 0.75rem;
+            /* Equivalent to mr-3 */
+            height: 1.25rem;
+            /* Equivalent to h-5 */
+            width: 1.25rem;
+            /* Equivalent to w-5 */
+            color: #2563eb;
+            /* Equivalent to text-blue-600 */
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Error Message */
+        #error-message {
+            text-align: center;
+            color: #dc2626;
+            /* Equivalent to text-red-600 */
+            margin-top: 0.75rem;
+            /* Equivalent to mt-3 */
+            display: none;
+            /* Hidden by default */
+        }
+
+        /* Chat Message Bubbles */
+        .flex {
+            display: flex;
+        }
+
+        .justify-end {
+            justify-content: flex-end;
+        }
+
+        .justify-start {
+            justify-content: flex-start;
+        }
+
+        .mb-3 {
+            margin-bottom: 0.75rem;
+        }
+
+        .p-3 {
+            padding: 0.75rem;
+        }
+
+        .rounded-xl {
+            border-radius: 0.75rem;
+        }
+
+        .max-w-\[80\%\] {
+            max-width: 80%;
+        }
+
+        .shadow-sm {
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .bg-blue-500 {
+            background-color: rgba(59, 130, 246, 0.8);
+            color: white;
+        }
+
+        .bg-blue-100 {
+            background-color: rgba(219, 234, 254, 0.7);
+            color: #1e40af;
+        }
+
+        .bg-gray-200 {
+            background-color: rgba(229, 231, 235, 0.7);
+            color: #1f2937;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main Chatbot App Container -->
+    <div id="app">
+        <div id="chatbot-container">
+            <h2>eduPAL Chatbot</h2>
+
+            <!-- Chat Window -->
+            <div id="chat-window">
+                <!-- Initial welcome message will be added by JS on load -->
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Type your message here...">
+                <button id="send-button">Send</button>
+            </div>
+
+            <!-- Loading Indicator for API calls -->
+            <div id="loading-indicator">
+                <div class="spinner">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                </div>
+                Thinking...
+            </div>
+            <div id="error-message">
+                An error occurred. Please try again.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatWindow = document.getElementById('chat-window');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const errorMessage = document.getElementById('error-message');
+
+        let initialMessageDisplayed = false;
+
+        // IMPORTANT: Place your custom knowledge here!
+        const knowledgeBase = `
+            You are eduPAL, a chatbot designed to provide information about the University of Energy and Natural Resources (UENR).
+            UENR is a public university in Ghana, established in 2012.
+            Its main campus is located in Sunyani, Bono Region, Ghana.
+            UENR focuses on providing higher education, undertaking research, and disseminating knowledge in the fields of energy, natural resources, and applied sciences.
+            The university offers undergraduate and postgraduate programs across various schools including:
+            - School of Engineering
+            - School of Sciences
+            - School of Natural Resources
+            - School of Agriculture and Technology
+            - School of Geosciences
+            - School of Graduate Studies
+            Key departments include Civil Engineering, Electrical and Electronic Engineering, Renewable Energy Engineering, Computer Science, Environmental Management, Forest Resources Technology, and Sustainable Agriculture.
+            For admissions inquiries, please visit the UENR official website or contact their admissions office.
+            The former "eL academi" platform is now fully integrated and known as eduPAL, providing online learning resources related to UENR's academic programs.
+            If a user asks about "eL academi", clarify that it is now called eduPAL.
+            Do not mention "eL academi" unless specifically asked or for clarification.
+            When providing information, try to format it clearly with paragraphs or bullet points where appropriate.
+        `;
+
+        // Initialize Tone.js Synths for soft sound effects
+        const userSynth = new Tone.Synth({
+            oscillator: { type: "sine" },
+            envelope: {
+                attack: 0.02,
+                decay: 0.2,
+                sustain: 0.1,
+                release: 0.3
+            },
+            volume: -10
+        }).toDestination();
+
+        const botSynth = new Tone.Synth({
+            oscillator: { type: "triangle" },
+            envelope: {
+                attack: 0.02,
+                decay: 0.2,
+                sustain: 0.1,
+                release: 0.3
+            },
+            volume: -10
+        }).toDestination();
+
+        // Function to display messages in the chat window
+        function displayMessage(sender, text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.style.display = 'flex';
+            messageDiv.style.marginBottom = '0.75rem'; /* mb-3 */
+
+            const textBubble = document.createElement('div');
+            textBubble.style.padding = '0.75rem'; /* p-3 */
+            textBubble.style.borderRadius = '0.75rem'; /* rounded-xl */
+            textBubble.style.maxWidth = '80%'; /* max-w-[80%] */
+            textBubble.style.boxShadow = '0 1px 2px 0 rgba(0, 0, 0, 0.05)'; /* shadow-sm */
+
+            if (sender === 'user') {
+                messageDiv.style.justifyContent = 'flex-end';
+                textBubble.style.backgroundColor = 'rgba(59, 130, 246, 0.8)'; /* bg-blue-500 */
+                textBubble.style.color = 'white';
+                userSynth.triggerAttackRelease("C5", "8n");
+            } else {
+                messageDiv.style.justifyContent = 'flex-start';
+                textBubble.style.backgroundColor = 'rgba(229, 231, 235, 0.7)'; /* bg-gray-200 */
+                textBubble.style.color = '#1f2937'; /* text-gray-800 */
+                botSynth.triggerAttackRelease("G4", "8n");
+            }
+
+            // Convert newlines to <br> tags for basic paragraph formatting
+            textBubble.innerHTML = text.replace(/\n/g, '<br>');
+            messageDiv.appendChild(textBubble);
+            chatWindow.appendChild(messageDiv);
+
+            // Add animation class
+            messageDiv.classList.add('message-enter-active');
+
+            // Scroll to the bottom of the chat window
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        // Function to call the Gemini API
+        async function callGeminiAPI(userMessage) {
+            loadingIndicator.style.display = 'flex'; /* Show loading */
+            loadingIndicator.style.justifyContent = 'center';
+            loadingIndicator.style.alignItems = 'center';
+            errorMessage.style.display = 'none'; /* Hide error */
+            sendButton.disabled = true;
+            userInput.disabled = true;
+
+            try {
+                let prompt = "";
+                if (knowledgeBase) {
+                    prompt += `Here is some context/knowledge you should use to answer questions. Please format your responses clearly with paragraphs or bullet points where appropriate:\n${knowledgeBase.trim()}\n\n`;
+                }
+                prompt += `User: ${userMessage}`;
+
+                const payload = {
+                    contents: [{ role: "user", parts: [{ text: prompt }] }]
+                };
+
+                // IMPORTANT: Replace "YOUR_GEMINI_API_KEY" with your actual API key.
+                // You can get one from Google AI Studio: https://aistudio.google.com/app/apikey
+                const apiKey = "AIzaSyCZGrAJpOq_3n2pSWIVNDSG0ylg_QP0tks"; // <--- PASTE YOUR API KEY HERE!
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('API Error:', errorData);
+                    let specificError = "Please check your API key and network connection.";
+                    if (response.status === 403) {
+                        specificError = "Access denied. Ensure your API key is correct and has permission for the Gemini API.";
+                    } else if (response.status === 429) {
+                        specificError = "Too many requests. You've hit the API rate limit. Please try again shortly.";
+                    }
+                    throw new Error(`API request failed: ${specificError}`);
+                }
+
+                const result = await response.json();
+
+                let botResponseText = "I'm sorry, I couldn't generate a response.";
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    botResponseText = result.candidates[0].content.parts[0].text;
+                }
+
+                displayMessage('bot', botResponseText);
+
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                errorMessage.style.display = 'block'; /* Show error */
+                displayMessage('bot', `Oops! Something went wrong. ${error.message || 'Please try again.'}`);
+            } finally {
+                loadingIndicator.style.display = 'none'; /* Hide loading */
+                sendButton.disabled = false;
+                userInput.disabled = false;
+                userInput.focus(); // Keep focus on input after response
+            }
+        }
+
+        // Function to handle sending messages
+        function sendMessage() {
+            // Start Tone.js context on first user interaction
+            if (Tone.context.state !== 'running') {
+                Tone.start();
+            }
+
+            const message = userInput.value.trim();
+            if (message) {
+                displayMessage('user', message);
+                userInput.value = ''; // Clear input field
+                callGeminiAPI(message);
+            }
+        }
+
+        // Event Listeners
+        sendButton.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Initial setup on window load
+        window.onload = () => {
+            // Display initial welcome message
+            displayMessage('bot', "Hello! I'm eduPAL, your assistant for the University of Energy and Natural Resources. How can I help you today?");
+            initialMessageDisplayed = true; // Mark as displayed
+
+            userInput.focus();
+            userInput.disabled = false;
+            sendButton.disabled = false;
+        };
+    </script>
+</body>
+
+</html>

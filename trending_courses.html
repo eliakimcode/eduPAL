@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Courses | eduPAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Basic Resets & Global Styles (consistent across pages) */
+        :root {
+            --color-primary-dark: #1A2C3D;
+            /* Deep Blue */
+            --color-accent-green: #4CAF50;
+            /* Vibrant Green */
+            --color-light-gray: #F3F4F6;
+            --color-white: #FFFFFF;
+            --color-secondary-blue: #3366CC;
+            /* Medium Blue */
+            --color-text-light: #6B7280;
+            /* Darker Gray for secondary text */
+            --color-text-dark-gray: #4A5568;
+            /* Even darker gray for info */
+            font-size: 16px;
+            /* Base font size for rem calculations */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--color-primary-dark);
+            background-color: var(--color-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 75rem;
+            /* 1200px / 16px */
+            margin: 0 auto;
+            padding: 0 1.25rem;
+            /* 20px / 16px */
+        }
+
+        a {
+            color: var(--color-secondary-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-accent-green);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5625rem;
+            /* 12px 25px */
+            border-radius: 0.3125rem;
+            /* 5px */
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent-green);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background-color: #388E3C;
+            /* Slightly darker green */
+            transform: translateY(-0.125rem);
+            /* 2px */
+        }
+
+        .btn-secondary {
+            background-color: var(--color-secondary-blue);
+            color: var(--color-white);
+            font-size: 0.9em;
+            padding: 0.5rem 0.9375rem;
+            /* 8px 15px */
+        }
+
+        .btn-secondary:hover {
+            background-color: #2854A3;
+            /* Slightly darker blue */
+            transform: translateY(-0.0625rem);
+            /* 1px */
+        }
+
+        /* Header (consistent across pages) */
+        .main-header {
+            background-color: var(--color-white);
+            padding: 0.9375rem 0;
+            /* 15px */
+            border-bottom: 0.0625rem solid var(--color-light-gray);
+            /* 1px */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 300px;
+        }
+
+        @media(max-width: 1000px) {
+            .logo {
+                width: 180px;
+            }
+        }
+
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .main-nav li {
+            margin-left: 1.875rem;
+            /* 30px */
+        }
+
+        .nav-link {
+            font-weight: 600;
+            font-size: 1.05em;
+            color: var(--color-primary-dark);
+        }
+
+        .active-link {
+            color: var(--color-secondary-blue);
+        }
+
+        .nav-link:hover {
+            color: var(--color-secondary-blue);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 1.5625rem;
+            /* 25px */
+            height: 0.1875rem;
+            /* 3px */
+            background-color: var(--color-primary-dark);
+            margin: 0.3125rem 0;
+            /* 5px */
+            transition: all 0.3s ease;
+        }
+
+        /* Trending Courses Page Specific Styles */
+        .trending-page-main {
+            padding: 3.75rem 0;
+            /* 60px */
+            background-color: var(--color-light-gray);
+        }
+
+        .trending-section {
+            background-color: var(--color-white);
+            padding: 2.5rem;
+            /* 40px */
+            border-radius: 0.5rem;
+            /* 8px */
+            box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.08);
+            /* 0 4px 15px */
+            margin-bottom: 2.5rem;
+            /* 40px */
+        }
+
+        .trending-section h2 {
+            font-size: 2em;
+            color: var(--color-primary-dark);
+            margin-bottom: 1.5625rem;
+            /* 25px */
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.625rem;
+            /* 10px */
+        }
+
+        .trending-section h2::after {
+            content: '';
+            display: block;
+            width: 3.75rem;
+            /* 60px */
+            height: 0.1875rem;
+            /* 3px */
+            background-color: var(--color-accent-green);
+            margin: 0.625rem auto 0;
+            /* 10px */
+        }
+
+        /* Course Grid (reused from homepage and categories page) */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+            /* 300px / 16px */
+            gap: 1.875rem;
+            /* 30px */
+            margin-top: 1.875rem;
+            /* 30px */
+        }
+
+        .course-card {
+            background-color: var(--color-white);
+            border-radius: 0.5rem;
+            /* 8px */
+            overflow: hidden;
+            box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.08);
+            /* 0 4px 15px */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-card:hover {
+            transform: translateY(-0.3125rem);
+            /* 5px */
+            box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.12);
+            /* 0 6px 20px */
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 11.25rem;
+            /* 180px */
+            object-fit: cover;
+            border-bottom: 0.0625rem solid var(--color-light-gray);
+            /* 1px */
+        }
+
+        .card-content {
+            padding: 1.25rem;
+            /* 20px */
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .course-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 0.625rem;
+            /* 10px */
+            color: var(--color-primary-dark);
+        }
+
+        .course-card .platform-name {
+            font-size: 0.9em;
+            color: var(--color-secondary-blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            /* 8px */
+        }
+
+        .course-info {
+            font-size: 0.85em;
+            color: var(--color-text-dark-gray);
+            font-weight: 500;
+            margin-bottom: 0.3125rem;
+            /* 5px */
+        }
+
+        .course-card .short-desc {
+            font-size: 0.95em;
+            color: var(--color-text-light);
+            margin-bottom: 0.9375rem;
+            /* 15px */
+            flex-grow: 1;
+        }
+
+        .course-card .rating {
+            color: #FFC107;
+            font-size: 1.1em;
+            margin-bottom: 0.9375rem;
+            /* 15px */
+        }
+
+
+        /* ===================================================
+============ FOOTER ================================ */
+        .main-footer {
+            background-color: var(--color-light-gray);
+            border-radius: 30px;
+            box-shadow: 0 0 10px var(--color-primary-dark);
+            margin: 20px 5%;
+            color: var(--color-white);
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .main-footer p {
+            color: var(--color-primary-dark);
+            font-size: 20px;
+        }
+
+        .main-footer .disclosure {
+            font-size: 0.85em;
+            color: var(--color-primary-dark);
+            margin-top: 15px;
+        }
+
+        .main-footer .disclosure a {
+            color: var(--color-accent-green);
+        }
+
+        .main-footer .footer-links {
+            margin-top: 20px;
+            color: var(--color-primary-dark);
+            font-weight: 600;
+        }
+
+        .main-footer .footer-links a {
+            font-weight: 600;
+            color: var(--color-primary-dark);
+            margin: 0 15px;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .main-footer .footer-links a:hover {
+            color: var(--color-secondary-blue);
+        }
+
+
+
+
+        /* ==================================================================
+        ========= MOBILE SCREENS ============================ */
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--color-white);
+                position: absolute;
+                top: 4.375rem;
+                /* 70px */
+                left: 0;
+                padding-bottom: 0.625rem;
+                /* 10px */
+                box-shadow: 0 0.3125rem 0.625rem rgba(0, 0, 0, 0.1);
+                /* 0 5px 10px */
+            }
+
+            .main-nav.active {
+                display: flex;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .main-nav li {
+                margin: 0;
+                border-bottom: 0.0625rem solid var(--color-light-gray);
+                /* 1px */
+            }
+
+            .main-nav a {
+                display: block;
+                padding: 0.9375rem 1.25rem;
+                /* 15px 20px */
+                text-align: center;
+                width: 100%;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .trending-section {
+                padding: 1.5rem;
+                /* 24px */
+            }
+
+            .trending-section h2 {
+                font-size: 1.6em;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .main-footer .footer-links a {
+                display: block;
+                margin: 0.625rem 0;
+                /* 10px */
+            }
+        }
+
+        /* Optional: Hamburger icon animation */
+        .nav-toggle.open span:nth-child(1) {
+            transform: rotate(-45deg) translate(-0.3125rem, 0.375rem);
+            /* -5px, 6px */
+        }
+
+        .nav-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.open span:nth-child(3) {
+            transform: rotate(45deg) translate(-0.3125rem, -0.375rem);
+            /* -5px, -6px */
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- =================================================================================
+     ======================== HEADER ============================== -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="./img/logo.png" class="logo" alt="eduPAL Logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="./trending_courses.html" class="nav-link">Trending Courses</a></li>
+                    <li><a href="./all_courses.html" class="nav-link">All Courses</a></li>
+                    <li><a href="" target="_blank" rel="noopener" class="nav-link">Pal
+                            Library</a></li>
+                    <li><a href="" target="_blank" rel="noopener" class="nav-link">eduPAL Basic</a></li>
+                    <li><a href="./about.html" class="nav-link">About</a></li>
+                    <li><a href="./contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!--  ================== HUMBURGGER =================================== -->
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+
+    <!-- =====================================================================================
+     ================================================================================
+     ========== MAIN SECTION ================================================ -->
+    <main class="trending-page-main">
+        <div class="container">
+            <section class="trending-section">
+                <h2>Currently Trending: Popular Tech Skills</h2>
+                <div class="course-grid">
+                    <!-- Trending Course Card 1 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/3366CC/FFFFFF?text=Python+for+DS"
+                            alt="Python for Data Science">
+                        <div class="card-content">
+                            <h3>Python for Data Science, AI & Development</h3>
+                            <p class="platform-name">Platform: Coursera (IBM)</p>
+                            <p class="course-info">Type: Professional Cert | Hours: 112 | Category: Data, AI,
+                                Programming</p>
+                            <p class="short-desc">Master Python for data analysis, machine learning, and web
+                                development.</p>
+                            <div class="rating">★★★★★ (Our Review)</div>
+                            <a href="https://www.coursera.org/professional-certificates/python-for-applied-data-science-ai-development"
+                                rel="noopener" target="_blank" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                    <!-- Trending Course Card 2 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/4CAF50/FFFFFF?text=Cloud+Architect"
+                            alt="Cloud Architect">
+                        <div class="card-content">
+                            <h3>AWS Cloud Architecting</h3>
+                            <p class="platform-name">Platform: edX (AWS)</p>
+                            <p class="course-info">Type: Professional Cert | Hours: 160 | Category: Cloud Computing</p>
+                            <p class="short-desc">Learn to design scalable, highly available, and fault-tolerant systems
+                                on AWS.</p>
+                            <div class="rating">★★★★★ (Our Review)</div>
+                            <a href="https://www.edx.org/professional-certificate/aws-cloud-architecting" rel="noopener"
+                                target="_blank" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                    <!-- Trending Course Card 3 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/FFC107/1A2C3D?text=Cyber+Analyst"
+                            alt="Cybersecurity Analyst">
+                        <div class="card-content">
+                            <h3>Google Cybersecurity Professional Certificate</h3>
+                            <p class="platform-name">Platform: Coursera (Google)</p>
+                            <p class="course-info">Type: Professional Cert | Hours: 160 | Category: Cybersecurity</p>
+                            <p class="short-desc">Prepare for a career in cybersecurity with hands-on skills and
+                                real-world projects.</p>
+                            <div class="rating">★★★★★ (Our Review)</div>
+                            <a href="https://www.coursera.org/professional-certificates/google-cybersecurity"
+                                rel="noopener" target="_blank" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                    <!-- Trending Course Card 4 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/64B5F6/1A2C3D?text=AI+Foundations" alt="AI Foundations">
+                        <div class="card-content">
+                            <h3>AI Fundamentals for Non-Technical Professionals</h3>
+                            <p class="platform-name">Platform: LinkedIn Learning</p>
+                            <p class="course-info">Type: Learning Path | Hours: 12 | Category: Artificial Intelligence
+                            </p>
+                            <p class="short-desc">Understand the basics of AI and its impact on business and daily life.
+                            </p>
+                            <div class="rating">★★★★☆ (Our Review)</div>
+                            <a href="https://www.linkedin.com/learning/paths/ai-fundamentals-for-non-technical-professionals"
+                                rel="noopener" target="_blank" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="trending-section">
+                <h2>Rising Stars: Business & Soft Skills</h2>
+                <div class="course-grid">
+                    <!-- Trending Course Card 5 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/1A2C3D/FFFFFF?text=Leadership" alt="Leadership Skills">
+                        <div class="card-content">
+                            <h3>Foundations of Everyday Leadership</h3>
+                            <p class="platform-name">Platform: Coursera (University of Illinois)</p>
+                            <p class="course-info">Type: Course | Hours: 20 | Category: Business & Entrepreneurship</p>
+                            <p class="short-desc">Develop essential leadership qualities applicable in any professional
+                                setting.</p>
+                            <div class="rating">★★★★★ (Our Review)</div>
+                            <a href="https://www.coursera.org/learn/foundations-everyday-leadership" target="_blank"
+                                rel="noopener" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                    <!-- Trending Course Card 6 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/FF9800/FFFFFF?text=Public+Speak" alt="Public Speaking">
+                        <div class="card-content">
+                            <h3>Dynamic Public Speaking</h3>
+                            <p class="platform-name">Platform: edX (University of Washington)</p>
+                            <p class="course-info">Type: Specialization | Hours: 48 | Category: Communication & Language
+                            </p>
+                            <p class="short-desc">Improve your presentation skills and overcome public speaking anxiety.
+                            </p>
+                            <div class="rating">★★★★☆ (Our Review)</div>
+                            <a href="https://www.edx.org/specialization/dynamic-public-speaking" target="_blank"
+                                rel="noopener" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                    <!-- Trending Course Card 7 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/3366CC/FFFFFF?text=Fin+Literacy"
+                            alt="Financial Literacy">
+                        <div class="card-content">
+                            <h3>Financial Markets</h3>
+                            <p class="platform-name">Platform: Coursera (Yale University)</p>
+                            <p class="course-info">Type: Course | Hours: 33 | Category: Business & Entrepreneurship</p>
+                            <p class="short-desc">A comprehensive overview of financial markets and institutions.</p>
+                            <div class="rating">★★★★★ (Our Review)</div>
+                            <a href="https://www.coursera.org/learn/financial-markets" target="_blank" rel="noopener"
+                                class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="trending-section">
+                <h2>Health & Wellness in Demand</h2>
+                <div class="course-grid">
+                    <!-- Trending Course Card 8 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/4CAF50/FFFFFF?text=Nutrition" alt="Nutrition Science">
+                        <div class="card-content">
+                            <h3>Nutrition and Health</h3>
+                            <p class="platform-name">Platform: FutureLearn (Wageningen University)</p>
+                            <p class="course-info">Type: Short Course | Hours: 24 | Category: Health</p>
+                            <p class="short-desc">Explore the science behind healthy eating and its impact on
+                                well-being.</p>
+                            <div class="rating">★★★★☆ (Our Review)</div>
+                            <a href="https://www.futurelearn.com/courses/nutrition-and-health" target="_blank"
+                                rel="noopener" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                    <!-- Trending Course Card 9 -->
+                    <div class="course-card">
+                        <img src="https://placehold.co/300x180/FFC107/1A2C3D?text=Mental+Health" alt="Mental Health">
+                        <div class="card-content">
+                            <h3>The Science of Well-Being</h3>
+                            <p class="platform-name">Platform: Coursera (Yale University)</p>
+                            <p class="course-info">Type: Course | Hours: 19 | Category: Health, Faith & Life Values</p>
+                            <p class="short-desc">Learn practical strategies for increasing happiness and building
+                                productive habits.</p>
+                            <div class="rating">★★★★★ (Our Review)</div>
+                            <a href="https://www.coursera.org/learn/the-science-of-well-being" target="_blank"
+                                rel="noopener" class="btn btn-secondary">View Course</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+
+
+
+    <div class="chatbot" style="position: fixed; right: 100px; bottom: 100px; z-index: 1000">
+        <a href="./edupal_chat.html"
+            style="font-size: 50px; color: blue; display: flex; flex-direction: column; justify-content: center;">
+            <i class="fa-solid fa-comments"></i>
+            <span style="font-size: 15px;">Talk about UENR</span>
+        </a>
+    </div>
+
+
+
+
+
+
+    <!-- =============================================================================
+     ================== FOOTER =============================================== -->
+    <footer class="main-footer">
+        <div class="container">
+            <img src="./img/logo.png" class="logo" alt="eduPAL Logo">
+            <p>&copy; <span id="current-year"></span> eduPAL. All rights reserved.</p>
+            <p class="disclosure">This site contains affiliate links. We may earn a commission if you make a purchase
+                through these links, at no extra cost to you. <a href="affiliate-disclosure.html">Learn more.</a></p>
+            <div class="footer-links">
+                <a href="./about.html">About Us</a>
+                <a href="./about.html#privacy-policy">Privacy Policy</a>
+                <a href="./about.html#terms-of-use">Terms of Service</a>
+                <a href="../contact.html.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <!-- =======================================================================
+     ============= SCRIPTS ===================================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Mobile Navigation Toggle (reused from other pages)
+            const navToggle = document.querySelector('.nav-toggle');
+            const mainNav = document.querySelector('.main-nav');
+
+            if (navToggle && mainNav) {
+                navToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                    navToggle.classList.toggle('open');
+                });
+                mainNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                            navToggle.classList.remove('open');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

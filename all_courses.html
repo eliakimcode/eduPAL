@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eduPAL | Explore All Courses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../all_courses.css">
+
+</head>
+
+<body>
+
+    <!-- =================================================================================
+     ======================== HEADER ============================== -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="./img/logo.png" class="logo" alt="eduPAL Logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="./trending_courses.html" class="nav-link">Trending Courses</a></li>
+                    <li><a href="./all_courses.html" class="nav-link">All Courses</a></li>
+                    <li><a href="" target="_blank" rel="noopener" class="nav-link">Pal
+                            Library</a></li>
+                    <li><a href="" target="_blank" rel="noopener" class="nav-link">eduPAL Basic</a></li>
+                    <li><a href="./about.html" class="nav-link">About</a></li>
+                    <li><a href="./contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!--  ================== HUMBURGGER =================================== -->
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+
+
+
+    <!-- ================================================================
+     ======================= MAIN ============================= -->
+    <main class="categories-page-main">
+        <div class="container main-content-wrapper">
+            <aside class="filter-sidebar">
+                <button class="close-filter-sidebar-btn" aria-label="Close filters"><i
+                        class="fas fa-times"></i></button>
+                <h3>Filters</h3>
+
+                <!-- ================================= CATEGORIES ==================== -->
+                <div class="filter-group">
+                    <label for="category-filter">Category</label>
+                    <select id="category-filter">
+                        <option value="all">All Categories</option>
+                        <option value="it-tech">IT & Tech</option>
+                        <option value="business-entrepreneurship">Business & Entrepreneurship</option>
+                        <option value="health">Health</option>
+                        <option value="faith-life-values">Faith & Life Values</option>
+                        <option value="cybersecurity">Cybersecurity</option>
+                        <option value="data">Data</option>
+                        <option value="programming">Programming</option>
+                        <option value="artificial-intelligence">Artificial Intelligence</option>
+                        <option value="cloud-computing">Cloud Computing</option>
+                        <option value="communication-language">Communication & Language</option>
+                        <option value="networking">Networking</option>
+                    </select>
+                </div>
+
+                <!-- ============================ SEARCH FUNCTION ===================== -->
+                <div class="filter-group search-filter">
+                    <label for="search-input">Search Courses</label>
+                    <input type="text" id="search-input" placeholder="e.g., Python, Marketing">
+                </div>
+
+                <!-- ============================ PLATFORM ========================== -->
+                <div class="filter-group">
+                    <h4>Platform</h4>
+                    <div class="checkbox-group" id="platform-filter">
+                        <label><input type="checkbox" value="Coursera"> Coursera</label>
+                        <label><input type="checkbox" value="edX"> edX</label>
+                        <label><input type="checkbox" value="Alison"> Alison</label>
+                        <label><input type="checkbox" value="Cisco NetAcad"> Cisco NetAcad</label>
+                        <label><input type="checkbox" value="FutureLearn"> FutureLearn</label>
+                        <label><input type="checkbox" value="LinkedIn Learning"> LinkedIn Learning</label>
+                        <label><input type="checkbox" value="HP LIFE"> HP LIFE</label>
+                        <label><input type="checkbox" value="OpenLearn"> OpenLearn</label>
+                        <label><input type="checkbox" value="Udemy"> Udemy</label>
+                    </div>
+                </div>
+
+                <!-- ================== COST =================== -->
+                <div class="filter-group">
+                    <h4>Cost</h4>
+                    <div class="radio-group" id="cost-filter">
+                        <label><input type="radio" name="cost" value="all" checked> All</label>
+                        <label><input type="radio" name="cost" value="free"> Free</label>
+                        <label><input type="radio" name="cost" value="paid"> Paid</label>
+                    </div>
+                </div>
+
+                <!-- ======================== COURSE TYPE ============== -->
+                <div class="filter-group">
+                    <h4>Course Type</h4>
+                    <div class="checkbox-group" id="course-type-filter">
+                        <label><input type="checkbox" value="Course"> Course</label>
+                        <label><input type="checkbox" value="Specialization"> Specialization</label>
+                        <label><input type="checkbox" value="Professional Cert"> Professional Cert</label>
+                        <label><input type="checkbox" value="Diploma"> Diploma</label>
+                        <label><input type="checkbox" value="MicroBachelors"> MicroBachelors</label>
+                        <label><input type="checkbox" value="MicroMasters"> MicroMasters</label>
+                        <label><input type="checkbox" value="Learning Path"> Learning Path</label>
+                        <label><input type="checkbox" value="Certification Prep"> Certification Prep</label>
+                        <label><input type="checkbox" value="Free Course"> Free Course</label>
+                        <label><input type="checkbox" value="University Course"> University Course</label>
+                    </div>
+                </div>
+
+                <!-- =========== HOURS =========== -->
+                <div class="filter-group">
+                    <label for="max-hours-filter">Max Hours</label>
+                    <input type="number" id="max-hours-filter" placeholder="e.g., 100" min="1">
+                </div>
+
+
+                <!-- ====================================================== CLEAR AND APPLY FILTERS ========================= -->
+                <button id="apply-filters-btn" class="btn btn-primary">Apply Filters</button>
+                <button id="clear-filters-btn" class="btn btn-secondary">Clear Filters</button>
+            </aside>
+
+
+            <!-- ===========================================================
+             =============== COURSES DISPLAY AREA ======================================== -->
+            <section class="course-display-area">
+                <button class="open-filter-sidebar-btn" aria-label="Open filters"><i class="fas fa-filter"></i>
+                    Filters</button>
+                <h2 class="section-title">All Courses</h2>
+
+                <div id="course-results-grid" class="course-grid">
+                    <!-- ============= LOAD COURSES ================= -->
+                </div>
+
+                <div id="no-results-message" class="no-results-message" style="display: none;">
+                    <p>No courses match your current filters. Try adjusting your selections!</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+
+
+
+
+
+    <div class="chatbot" style="position: fixed; right: 100px; bottom: 100px; z-index: 1000">
+        <a href="./edupal_chat.html"
+            style="font-size: 50px; color: blue; display: flex; flex-direction: column; justify-content: center;">
+            <i class="fa-solid fa-comments"></i>
+            <span style="font-size: 15px;">Talk about UENR</span>
+        </a>
+    </div>
+
+
+
+
+
+    <!-- =============================================================================
+     ================== FOOTER =============================================== -->
+    <footer class="main-footer">
+        <div class="container">
+            <img src="./img/logo.png" class="logo" alt="eduPAL Logo">
+            <p>&copy; <span id="current-year"></span> eduPAL. All rights reserved.</p>
+            <p class="disclosure">This site contains affiliate links. We may earn a commission if you make a purchase
+                through these links, at no extra cost to you. <a href="affiliate-disclosure.html">Learn more.</a></p>
+            <div class="footer-links">
+                <a href="./about.html">About Us</a>
+                <a href="./about.html#privacy-policy">Privacy Policy</a>
+                <a href="./about.html#terms-of-use">Terms of Service</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ================================================================
+     =================== SCRIPTS =============================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Global Elements ---
+            const currentYearSpan = document.getElementById('current-year');
+            const navToggle = document.querySelector('.nav-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            const categoryFilterDropdown = document.getElementById('category-filter');
+            const searchInput = document.getElementById('search-input');
+            const platformFilter = document.getElementById('platform-filter');
+            const costFilter = document.getElementById('cost-filter');
+            const courseTypeFilter = document.getElementById('course-type-filter');
+            const maxHoursFilter = document.getElementById('max-hours-filter');
+            const applyFiltersBtn = document.getElementById('apply-filters-btn');
+            const clearFiltersBtn = document.getElementById('clear-filters-btn');
+            const courseResultsGrid = document.getElementById('course-results-grid');
+            const noResultsMessage = document.getElementById('no-results-message');
+            const openFilterSidebarBtn = document.querySelector('.open-filter-sidebar-btn');
+            const closeFilterSidebarBtn = document.querySelector('.close-filter-sidebar-btn');
+            const filterSidebar = document.querySelector('.filter-sidebar');
+
+            // --- Course Data (Sample Data) ---
+            // In a real application, this data might come from a JSON file or API.
+            // For a static site, you'd update this array manually.
+            const allCourses = [
+                {
+                    id: 'p1',
+                    title: 'Introduction to Programming',
+                    platform: 'Coursera',
+                    type: 'Specialization',
+                    hours: 40,
+                    category: 'Programming',
+                    description: 'A foundational course covering basic programming concepts and logic, perfect for beginners.',
+                    rating: 5,
+                    imageUrl: 'https://s3.amazonaws.com/coursera_assets/meta_images/generated/XDP/XDP~COURSE!~introduction-to-computer-programming/XDP~COURSE!~introduction-to-computer-programming.jpeg',
+                    link: 'https://www.coursera.org/learn/programming-introduction?action=enroll',
+                    cost: 'paid'
+                },
+                {
+                    id: 'n1',
+                    title: 'Networking Basics',
+                    platform: 'Cisco NetAcad',
+                    type: 'Course',
+                    hours: 22,
+                    category: 'Networking',
+                    description: 'Understand the fundamentals of computer networking and internet protocols.',
+                    rating: 5,
+                    imageUrl: 'https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2022_02_Blockchain-1p1.jpg',
+                    link: 'https://www.netacad.com/courses/networking/networking-basics',
+                    cost: 'free'
+                },
+
+                {
+                    id: 'wd1',
+                    title: 'Web Development Fundamentals',
+                    platform: 'Alison',
+                    type: 'Diploma',
+                    hours: 20,
+                    category: 'Programming',
+                    description: 'Learn HTML, CSS, and JavaScript to build your first dynamic websites.',
+                    rating: 4,
+                    imageUrl: 'https://developers.google.com/static/web/images/social-webfu-16x9.png',
+                    link: 'https://alison.com/course/web-development-with-html-and-css-for-beginners',
+                    cost: 'free'
+                },
+
+                {
+                    id: 'ds1',
+                    title: 'Introduction to Data Science',
+                    platform: 'edX',
+                    type: 'Course',
+                    hours: 25,
+                    category: 'Data',
+                    description: 'Explore the basics of data science, including data analysis and visualization.',
+                    rating: 5,
+                    imageUrl: 'https://www.fsm.ac.in/blog/wp-content/uploads/2022/07/FUqHEVVUsAAbZB0-1024x580.jpg',
+                    link: 'https://www.coursera.org/specializations/introduction-data-science',
+                    cost: 'paid'
+                },
+                {
+                    id: 'cs1',
+                    title: 'Introduction to Cybersecurity',
+                    platform: 'Cisco NetAcad',
+                    type: 'Course',
+                    hours: 30,
+                    category: 'Cybersecurity',
+                    description: 'Gain fundamental knowledge in cybersecurity concepts and threats.',
+                    rating: 4,
+                    imageUrl: 'https://www.whizlabs.com/blog/wp-content/uploads/2020/05/introduction-to-cybersecurity.png',
+                    link: 'https://www.netacad.com/courses/introduction-to-cybersecurity?courseLang=en-US',
+                    cost: 'free'
+                },
+
+                {
+                    id: 'cc1',
+                    title: 'Cloud Computing Fundamentals',
+                    platform: 'edX',
+                    type: 'Professional Certificate',
+                    hours: 30,
+                    category: 'Cloud Computing',
+                    description: 'Understand the core concepts of cloud computing and its major providers.',
+                    rating: 5,
+                    imageUrl: 'https://www.certybox.com/wp-content/webpc-passthru.php?src=https://www.certybox.com/wp-content/uploads/2021/03/cloud-computing-fundamentals_optimized-470x300.jpg&nocache=1',
+                    link: 'https://www.edx.org/certificates/professional-certificate/ec-council-cybersecurity-essentials?index=product&queryId=934f670042b22f4c156885e19435ecf1&position=3',
+                    cost: 'paid'
+                },
+                {
+                    id: 'dm1',
+                    title: 'Fundamentals of Digital Marketing and E-Commerce',
+                    platform: 'Coursera',
+                    type: 'Specialization',
+                    hours: 12,
+                    category: 'Business & Entrepreneurship',
+                    description: 'Learn key strategies for online marketing, social media, and SEO.',
+                    rating: 5,
+                    imageUrl: 'https://roselladigital.com/wp-content/uploads/2023/03/Fundamentals-of-digital-marketing.jpg',
+                    link: 'https://www.coursera.org/learn/foundations-of-digital-marketing-and-e-commerce',
+                    cost: 'paid'
+                },
+                {
+                    id: 'pm1',
+                    title: 'Business Fundamentals: Project Management',
+                    platform: 'FutureLearn',
+                    type: 'Short Course',
+                    hours: 10,
+                    category: 'Business & Entrepreneurship',
+                    description: 'Master the essential skills for planning, executing, and closing projects successfully.',
+                    rating: 4,
+                    imageUrl: 'https://pmglobalinstitute.com/wp-content/uploads/2024/01/Untitled-design-26.webp',
+                    link: 'https://www.futurelearn.com/courses/project-management',
+                    cost: 'free'
+                },
+                {
+                    id: 'ai1',
+                    title: 'Introduction to AI',
+                    platform: 'edX',
+                    type: 'MicroMasters',
+                    hours: 120,
+                    category: 'Artificial Intelligence',
+                    description: 'Explore the foundational concepts of Artificial Intelligence and its applications.',
+                    rating: 5,
+                    imageUrl: 'https://placehold.co/300x180/3366CC/FFFFFF?text=Intro+AI',
+                    link: 'https://www.edx.org/course/introduction-to-ai',
+                    cost: 'paid'
+                },
+                {
+                    id: 'ce1',
+                    title: 'Effective Communication Skills',
+                    platform: 'LinkedIn Learning',
+                    type: 'Learning Path',
+                    hours: 15,
+                    category: 'Communication & Language',
+                    description: 'Enhance your verbal and non-verbal communication for professional success.',
+                    rating: 4,
+                    imageUrl: 'https://placehold.co/300x180/4CAF50/FFFFFF?text=Comm+Skills',
+                    link: 'https://www.linkedin.com/learning/effective-communication-skills',
+                    cost: 'paid'
+                },
+                {
+                    id: 'itsc1',
+                    title: 'Google IT Support Professional Certificate',
+                    platform: 'Coursera',
+                    type: 'Professional Cert',
+                    hours: 180,
+                    category: 'IT & Tech',
+                    description: 'Gain in-demand skills for an entry-level IT support role.',
+                    rating: 5,
+                    imageUrl: 'https://placehold.co/300x180/10B981/FFFFFF?text=Google+IT',
+                    link: 'https://www.coursera.org/professional-certificates/google-it-support',
+                    cost: 'paid'
+                },
+                {
+                    id: 'ibmds1',
+                    title: 'IBM Data Science Professional Certificate',
+                    platform: 'Coursera',
+                    type: 'Professional Cert',
+                    hours: 240,
+                    category: 'Data',
+                    description: 'Master data science skills with Python, SQL, and machine learning.',
+                    rating: 5,
+                    imageUrl: 'https://placehold.co/300x180/F3F4F6/1A2C3D?text=IBM+DS',
+                    link: 'https://www.coursera.org/professional-certificates/ibm-data-science',
+                    cost: 'paid'
+                },
+                {
+                    id: 'comptia1',
+                    title: 'CompTIA A+ Certification Prep',
+                    platform: 'Udemy',
+                    type: 'Certification Prep',
+                    hours: 90,
+                    category: 'IT & Tech',
+                    description: 'Prepare for the industry-recognized CompTIA A+ certification exam.',
+                    rating: 4,
+                    imageUrl: 'https://placehold.co/300x180/FFC107/1A2C3D?text=CompTIA+A%2B',
+                    link: 'https://www.udemy.com/course/comptia-a-plus-certification-prep',
+                    cost: 'paid'
+                },
+                {
+                    id: 'ph1',
+                    title: 'Introduction to Public Health',
+                    platform: 'OpenLearn',
+                    type: 'Free Course',
+                    hours: 10,
+                    category: 'Health',
+                    description: 'Explore the core concepts of public health and its impact on communities.',
+                    rating: 4,
+                    imageUrl: 'https://placehold.co/300x180/FF9800/FFFFFF?text=Public+Health',
+                    link: 'https://www.open.edu/openlearn/health-sports-psychology/public-health/introduction-public-health',
+                    cost: 'free'
+                },
+                {
+                    id: 'hap1',
+                    title: 'Human Anatomy and Physiology',
+                    platform: 'edX',
+                    type: 'University Course',
+                    hours: 80,
+                    category: 'Health',
+                    description: 'A comprehensive study of the human body\'s structure and function.',
+                    rating: 5,
+                    imageUrl: 'https://placehold.co/300x180/3366CC/FFFFFF?text=Anatomy',
+                    link: 'https://www.edx.org/course/human-anatomy-and-physiology',
+                    cost: 'paid'
+                },
+                {
+                    id: 'mt1',
+                    title: 'Medical Terminology',
+                    platform: 'Alison',
+                    type: 'Certificate',
+                    hours: 8,
+                    category: 'Health',
+                    description: 'Learn essential medical vocabulary for healthcare professionals.',
+                    rating: 3,
+                    imageUrl: 'https://placehold.co/300x180/4CAF50/FFFFFF?text=Med+Term',
+                    link: 'https://alison.com/courses/medical-terminology',
+                    cost: 'free'
+                },
+                {
+                    id: 'fcs1',
+                    title: 'Foundations of Cybersecurity',
+                    platform: 'edX',
+                    type: 'Professional Cert',
+                    hours: 100,
+                    category: 'Cybersecurity',
+                    description: 'Essential knowledge for protecting digital systems and data.',
+                    rating: 5,
+                    imageUrl: 'https://placehold.co/300x180/3366CC/FFFFFF?text=Cyber+Found',
+                    link: 'https://www.edx.org/course/foundations-of-cybersecurity',
+                    cost: 'paid'
+                },
+                {
+                    id: 'cts1',
+                    title: 'Critical Thinking Skills',
+                    platform: 'LinkedIn Learning',
+                    type: 'Learning Path',
+                    hours: 15,
+                    category: 'Communication & Language',
+                    description: 'Develop analytical and problem-solving abilities crucial for any career.',
+                    rating: 4,
+                    imageUrl: 'https://placehold.co/300x180/4CAF50/FFFFFF?text=Crit+Think',
+                    link: 'https://www.linkedin.com/learning/critical-thinking-skills',
+                    cost: 'paid'
+                },
+                {
+                    id: 'ie1',
+                    title: 'Introduction to Entrepreneurship',
+                    platform: 'HP LIFE',
+                    type: 'Free Course',
+                    hours: 5,
+                    category: 'Business & Entrepreneurship',
+                    description: 'Learn the basics of starting and running your own business.',
+                    rating: 4,
+                    imageUrl: 'https://placehold.co/300x180/FFC107/1A2C3D?text=Entrepreneur',
+                    link: 'https://www.life-global.org/courses/introduction-to-entrepreneurship',
+                    cost: 'free'
+                },
+                {
+                    id: 'py1',
+                    title: 'Python for Everybody',
+                    platform: 'Coursera',
+                    type: 'Specialization',
+                    hours: 190,
+                    category: 'Programming',
+                    description: 'Learn to program in Python and analyze data with this popular specialization.',
+                    rating: 5,
+                    imageUrl: 'https://placehold.co/300x180/1A2C3D/FFFFFF?text=Python',
+                    link: 'https://www.coursera.org/specializations/python',
+                    cost: 'paid'
+                },
+                {
+                    id: 'ml1',
+                    title: 'Machine Learning',
+                    platform: 'Stanford Online (Coursera)',
+                    type: 'Course',
+                    hours: 60,
+                    category: 'Artificial Intelligence',
+                    description: 'A classic course covering fundamental machine learning algorithms.',
+                    rating: 5,
+                    imageUrl: 'https://placehold.co/300x180/3366CC/FFFFFF?text=ML+Intro',
+                    link: 'https://www.coursera.org/learn/machine-learning',
+                    cost: 'paid'
+                },
+                {
+                    id: 'gd1',
+                    title: 'Graphic Design Basics',
+                    platform: 'Alison',
+                    type: 'Diploma',
+                    hours: 10,
+                    category: 'Creative Arts',
+                    description: 'Master the principles of graphic design for visual communication.',
+                    rating: 4,
+                    imageUrl: 'https://placehold.co/300x180/4CAF50/FFFFFF?text=Graphic+Design',
+                    link: 'https://alison.com/courses/graphic-design-basics',
+                    cost: 'free'
+                },
+                {
+                    id: 'fl1',
+                    title: 'Introduction to Philosophy',
+                    platform: 'edX',
+                    type: 'Course',
+                    hours: 30,
+                    category: 'Faith & Life Values',
+                    description: 'Explore fundamental philosophical questions about existence, knowledge, values, and reason.',
+                    rating: 4,
+                    imageUrl: 'https://placehold.co/300x180/FF9800/FFFFFF?text=Philosophy',
+                    link: 'https://www.edx.org/course/introduction-to-philosophy',
+                    cost: 'free'
+                }
+            ];
+
+
+            // FOOTER YEAR
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+
+            // MOBILE NAVIGATION
+            if (navToggle && mainNav) {
+                navToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                    navToggle.classList.toggle('open');
+                });
+                mainNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                            navToggle.classList.remove('open');
+                        }
+                    });
+                });
+            }
+
+            ///////// Mobile Filter Sidebar Toggle
+            if (openFilterSidebarBtn && closeFilterSidebarBtn && filterSidebar) {
+                openFilterSidebarBtn.addEventListener('click', () => {
+                    filterSidebar.classList.add('active');
+                });
+                closeFilterSidebarBtn.addEventListener('click', () => {
+                    filterSidebar.classList.remove('active');
+                });
+            }
+
+
+
+
+
+            //---------------------------------------------------- FUNCTIONS --------------------------------
+
+            //GET CARD ELEMENTS
+            function createCourseCard(course) {
+                const card = document.createElement('div');
+                card.classList.add('course-card');
+
+                card.innerHTML = `
+                    <img src="${course.imageUrl}" alt="${course.title}">
+                    <div class="card-content">
+                        <h3>${course.title}</h3>
+                        <p class="platform-name">Platform: ${course.platform}</p>
+                        <p class="course-info">Type: ${course.type} | Hours: ${course.hours} | Category: ${course.category}</p>
+                        <p class="short-desc">${course.description}</p>
+                        <div class="rating">${'★'.repeat(course.rating)}${'☆'.repeat(5 - course.rating)} (Our Review)</div>
+                        <a href="${course.link}" target="_blank" class="btn btn-secondary">View Course</a>
+                    </div>
+                `;
+                return card;
+            }
+
+
+
+            // DISPLAY COURSES IN GRID
+            function displayCourses(coursesToDisplay) {
+                courseResultsGrid.innerHTML = ''; // Clear existing cards
+                if (coursesToDisplay.length === 0) {
+                    noResultsMessage.style.display = 'block';
+                } else {
+                    noResultsMessage.style.display = 'none';
+                    coursesToDisplay.forEach(course => {
+                        courseResultsGrid.appendChild(createCourseCard(course));
+                    });
+                }
+            }
+
+
+
+            // APPLY ALL FILTERS
+            function applyFilters() {
+                let filteredCourses = [...allCourses]; // Start with all courses
+
+                // CATEGORIES FILTER
+                const selectedCategory = categoryFilterDropdown.value;
+                if (selectedCategory !== 'all') {
+                    filteredCourses = filteredCourses.filter(course =>
+                        course.category.toLowerCase().replace(/ /g, '-') === selectedCategory
+                    );
+                }
+
+
+                // SEARCH FILTER
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                if (searchTerm) {
+                    filteredCourses = filteredCourses.filter(course =>
+                        course.title.toLowerCase().includes(searchTerm) ||
+                        course.description.toLowerCase().includes(searchTerm) ||
+                        course.platform.toLowerCase().includes(searchTerm) ||
+                        course.category.toLowerCase().includes(searchTerm) ||
+                        course.type.toLowerCase().includes(searchTerm)
+                    );
+                }
+
+
+                // PLATFORM FILTER
+                const selectedPlatforms = Array.from(platformFilter.querySelectorAll('input[type="checkbox"]:checked'))
+                    .map(cb => cb.value);
+                if (selectedPlatforms.length > 0) {
+                    filteredCourses = filteredCourses.filter(course =>
+                        selectedPlatforms.includes(course.platform)
+                    );
+                }
+
+
+                // COST FILTER
+                const selectedCost = costFilter.querySelector('input[name="cost"]:checked').value;
+                if (selectedCost !== 'all') {
+                    filteredCourses = filteredCourses.filter(course =>
+                        course.cost === selectedCost
+                    );
+                }
+
+
+                // COURSE TYPE FILTER
+                const selectedCourseTypes = Array.from(courseTypeFilter.querySelectorAll('input[type="checkbox"]:checked'))
+                    .map(cb => cb.value);
+                if (selectedCourseTypes.length > 0) {
+                    filteredCourses = filteredCourses.filter(course =>
+                        selectedCourseTypes.includes(course.type)
+                    );
+                }
+
+
+                // MAX HOURS FILTER
+                const maxHours = parseInt(maxHoursFilter.value);
+                if (!isNaN(maxHours) && maxHours > 0) {
+                    filteredCourses = filteredCourses.filter(course =>
+                        course.hours <= maxHours
+                    );
+                }
+
+                displayCourses(filteredCourses);
+            }
+
+
+            // CLEAR ALL FILTERS
+            function clearFilters() {
+                categoryFilterDropdown.value = 'all';
+                searchInput.value = '';
+                platformFilter.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+                costFilter.querySelector('input[value="all"]').checked = true;
+                courseTypeFilter.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+                maxHoursFilter.value = '';
+                applyFilters(); // Re-apply filters to show all courses
+            }
+
+
+
+            // READ URL PARAMETERS 
+            function getUrlParameter(name) {
+                name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                var results = regex.exec(location.search);
+                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+            }
+
+
+
+            // --- Event Listeners ---
+            applyFiltersBtn.addEventListener('click', applyFilters);
+            clearFiltersBtn.addEventListener('click', clearFilters);
+
+
+
+            // APPLY FILTERS ON INPUT CHANGE WITHOUT CLICKING APPLY FILTER 
+            searchInput.addEventListener('input', applyFilters);
+            maxHoursFilter.addEventListener('input', applyFilters);
+            platformFilter.addEventListener('change', applyFilters);
+            costFilter.addEventListener('change', applyFilters);
+            courseTypeFilter.addEventListener('change', applyFilters);
+            categoryFilterDropdown.addEventListener('change', applyFilters);
+
+
+
+
+            // INITIAL PAGE LOAD
+            // CHECK URL PARAMETER AND APPLY INITIAL FILTER
+            const initialCategory = getUrlParameter('category');
+            if (initialCategory) {
+                categoryFilterDropdown.value = initialCategory;
+            }
+            applyFilters(); //DISPLAY ALL COURSES OR INITIAL FILTERED COURSES ON LOAD
+
+        });
+    </script>
+</body>
+
+</html>

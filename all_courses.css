@@ -1,0 +1,609 @@
+:root {
+    --color-primary-dark: #1A2C3D;
+    --color-accent-green: #4CAF50;
+    --color-light-gray: #F3F4F6;
+    --color-white: #FFFFFF;
+    --color-secondary-blue: #3366CC;
+    --color-text-light: #6B7280;
+    --color-text-dark-gray: #4A5568;
+    font-size: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--color-primary-dark);
+    background-color: var(--color-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+a {
+    color: var(--color-secondary-blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent-green);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5625rem;
+    border-radius: 0.3125rem;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--color-accent-green);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background-color: #388E3C;
+    transform: translateY(-0.125rem);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary-blue);
+    color: var(--color-white);
+    font-size: 0.9em;
+    padding: 0.5rem 0.9375rem;
+}
+
+.btn-secondary:hover {
+    background-color: #2854A3;
+    transform: translateY(-0.0625rem);
+}
+
+
+
+
+
+/* =================================================================
+=========== HEADER =========================================== */
+.main-header {
+    background-color: var(--color-white);
+    padding: 0.9375rem 0;
+    border-bottom: 0.0625rem solid var(--color-light-gray);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo {
+    width: 300px;
+}
+
+
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav li {
+    margin-left: 1.875rem;
+}
+
+.main-nav a {
+    font-weight: 600;
+    font-size: 1.05em;
+    color: var(--color-primary-dark);
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--color-secondary-blue);
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 1.5625rem;
+    /* 25px */
+    height: 0.1875rem;
+    /* 3px */
+    background-color: var(--color-primary-dark);
+    margin: 0.3125rem 0;
+    /* 5px */
+    transition: all 0.3s ease;
+}
+
+
+
+/* ======================================================================
+========== CATEGORIES SPECIFIC =================================== */
+.categories-page-main {
+    padding: 2.5rem 0;
+    /* 40px */
+    background-color: var(--color-light-gray);
+}
+
+.main-content-wrapper {
+    display: flex;
+    gap: 1.875rem;
+    /* 30px */
+    align-items: flex-start;
+}
+
+
+
+/*  ==============================================================
+==================== FILTER SIDEBAR =================================== */
+.filter-sidebar {
+    flex: 0 0 17.5rem;
+    background-color: var(--color-white);
+    padding: 1.5625rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 5.625rem;
+    max-height: calc(100vh - 6.875rem);
+    overflow-y: auto;
+}
+
+.filter-sidebar h3 {
+    font-size: 1.6em;
+    color: var(--color-primary-dark);
+    margin-bottom: 1.5625rem;
+}
+
+.filter-group {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 0.0625rem solid var(--color-light-gray);
+}
+
+.filter-group:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.filter-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.625rem;
+    color: var(--color-primary-dark);
+}
+
+.filter-group h4 {
+    font-size: 1.1em;
+    margin-bottom: 0.625rem;
+    color: var(--color-primary-dark);
+}
+
+
+
+.filter-group select,
+.filter-group input[type="text"],
+.filter-group input[type="number"] {
+    width: 100%;
+    padding: 0.625rem 0.9375rem;
+    border: 0.0625rem solid #BBBBBB;
+    border-radius: 0.3125rem;
+    font-size: 1em;
+    color: var(--color-primary-dark);
+    background-color: var(--color-white);
+    box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.05);
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%231A2C3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right 0.625rem center;
+    background-size: 1.125rem;
+}
+
+
+.filter-group select:focus,
+.filter-group input[type="text"]:focus,
+.filter-group input[type="number"]:focus {
+    outline: none;
+    border-color: var(--color-secondary-blue);
+    box-shadow: 0 0 0 0.1875rem rgba(51, 102, 204, 0.2);
+}
+
+.checkbox-group label,
+.radio-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.95em;
+    color: var(--color-text-light);
+    cursor: pointer;
+}
+
+
+.checkbox-group input[type="checkbox"],
+.radio-group input[type="radio"] {
+    margin-right: 0.625rem;
+}
+
+#apply-filters-btn,
+#clear-filters-btn {
+    width: 100%;
+    margin-top: 0.9375rem;
+}
+
+
+#clear-filters-btn {
+    background-color: var(--color-text-light);
+    margin-top: 0.625rem;
+}
+
+#clear-filters-btn:hover {
+    background-color: #525864;
+}
+
+
+
+
+/* =====================================================================
+========================== COURSES DISPLAY AREAD =============================== */
+.course-display-area {
+    flex: 1;
+    background-color: var(--color-white);
+    padding: 1.5625rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.08);
+}
+
+.course-display-area .section-title {
+    text-align: left;
+    margin-bottom: 1.875rem;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.course-display-area .section-title::after {
+    margin-left: 0;
+}
+
+
+
+
+
+/* ======================================================================
+====================== COURSES GRID ====================================== */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+    gap: 1.875rem;
+    margin-top: 0;
+}
+
+
+.course-card {
+    background-color: var(--color-white);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.course-card:hover {
+    transform: translateY(-0.3125rem);
+    box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.12);
+}
+
+
+.course-card img {
+    width: 100%;
+    height: 11.25rem;
+    object-fit: cover;
+    border-bottom: 0.0625rem solid var(--color-light-gray);
+}
+
+
+
+.card-content {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+
+.course-card h3 {
+    font-size: 1.3em;
+    margin-bottom: 0.625rem;
+    color: var(--color-primary-dark);
+}
+
+
+.course-card .platform-name {
+    font-size: 0.9em;
+    color: var(--color-secondary-blue);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+
+.course-info {
+    font-size: 0.85em;
+    color: var(--color-text-dark-gray);
+    font-weight: 500;
+    margin-bottom: 0.3125rem;
+}
+
+
+.course-card .short-desc {
+    font-size: 0.95em;
+    color: var(--color-text-light);
+    margin-bottom: 0.9375rem;
+    flex-grow: 1;
+}
+
+.course-card .rating {
+    color: #FFC107;
+    font-size: 1.1em;
+    margin-bottom: 0.9375rem;
+}
+
+
+.no-results-message {
+    text-align: center;
+    padding: 3.125rem 1.25rem;
+    font-size: 1.2em;
+    color: var(--color-text-light);
+}
+
+
+
+
+
+
+/* ===========================================================================================================
+======================== MOBILE FILTER TOGGL3 BUTTONS ======================================================= */
+.open-filter-sidebar-btn,
+.close-filter-sidebar-btn {
+    display: none;
+    background-color: var(--color-secondary-blue);
+    color: var(--color-white);
+    border: none;
+    padding: 0.625rem 0.9375rem;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    font-size: 1em;
+    margin-bottom: 1.25rem;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+
+.open-filter-sidebar-btn i,
+.close-filter-sidebar-btn i {
+    font-size: 1.1em;
+}
+
+.close-filter-sidebar-btn {
+    position: absolute;
+    top: 0.9375rem;
+    right: 0.9375rem;
+    background: none;
+    color: var(--color-primary-dark);
+    font-size: 1.5em;
+    padding: 0.3125rem;
+}
+
+
+
+.close-filter-sidebar-btn:hover {
+    color: var(--color-accent-green);
+}
+
+
+
+
+
+
+
+
+/*  ========================================================================================
+=========================== FOOTER =================================================== */
+.main-footer {
+    background-color: var(--color-light-gray);
+    border-radius: 30px;
+    box-shadow: 0 0 10px var(--color-primary-dark);
+    margin: 20px 5%;
+    color: var(--color-white);
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.main-footer p {
+    color: var(--color-primary-dark);
+    font-size: 20px;
+}
+
+.main-footer .disclosure {
+    font-size: 0.85em;
+    color: var(--color-primary-dark);
+    margin-top: 15px;
+}
+
+.main-footer .disclosure a {
+    color: var(--color-accent-green);
+}
+
+.main-footer .footer-links {
+    margin-top: 20px;
+    color: var(--color-primary-dark);
+    font-weight: 600;
+}
+
+.main-footer .footer-links a {
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    margin: 0 15px;
+    font-size: 20px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.main-footer .footer-links a:hover {
+    color: var(--color-secondary-blue);
+}
+
+
+
+
+
+
+/* ========================================================
+============ SMALL SCREENS ============================ */
+@media (max-width: 768px) {
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--color-white);
+        position: absolute;
+        top: 4.375rem;
+        /* 70px */
+        left: 0;
+        padding-bottom: 0.625rem;
+        /* 10px */
+        box-shadow: 0 0.3125rem 0.625rem rgba(0, 0, 0, 0.1);
+        /* 0 5px 10px */
+    }
+
+    .main-nav.active {
+        display: flex;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .main-nav li {
+        margin: 0;
+        border-bottom: 0.0625rem solid var(--color-light-gray);
+        /* 1px */
+    }
+
+    .main-nav a {
+        display: block;
+        padding: 0.9375rem 1.25rem;
+        /* 15px 20px */
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    /*=================== Categories Page Mobile Adjustments ===================================*/
+    .main-content-wrapper {
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .filter-sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        height: 100vh;
+        max-height: 100vh;
+        z-index: 1001;
+        transition: left 0.3s ease-in-out;
+        box-shadow: 0.3125rem 0 0.9375rem rgba(0, 0, 0, 0.2);
+        padding-top: 3.75rem;
+    }
+
+    .filter-sidebar.active {
+        left: 0;
+    }
+
+    .open-filter-sidebar-btn {
+        display: flex;
+    }
+
+    .close-filter-sidebar-btn {
+        display: block;
+    }
+
+    .course-display-area .section-title {
+        font-size: 1.6em;
+        text-align: center;
+    }
+
+    .course-display-area .section-title::after {
+        margin: 0.625rem auto 0;
+    }
+
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-footer .footer-links a {
+        display: block;
+        margin: 0.625rem 0;
+    }
+}
+
+
+@media(max-width: 1000px) {
+    .logo {
+        width: 180px;
+    }
+}
+
+
+
+
+/* =============================== 
+HUMBURGER ANIMATION ============================== */
+.nav-toggle.open span:nth-child(1) {
+    transform: rotate(-45deg) translate(-0.3125rem, 0.375rem);
+
+}
+
+.nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+    transform: rotate(45deg) translate(-0.3125rem, -0.375rem);
+
+}

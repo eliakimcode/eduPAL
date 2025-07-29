@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact eduPAL | Get In Touch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Basic Resets & Global Styles (consistent across pages) */
+        :root {
+            --color-primary-dark: #1A2C3D;
+            /* Deep Blue */
+            --color-accent-green: #4CAF50;
+            /* Vibrant Green */
+            --color-light-gray: #F3F4F6;
+            --color-white: #FFFFFF;
+            --color-secondary-blue: #3366CC;
+            /* Medium Blue */
+            --color-text-light: #6B7280;
+            /* Darker Gray for secondary text */
+            --color-text-dark-gray: #4A5568;
+            /* Even darker gray for info */
+            font-size: 16px;
+            /* Base font size for rem calculations */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--color-primary-dark);
+            background-color: var(--color-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 75rem;
+            /* 1200px / 16px */
+            margin: 0 auto;
+            padding: 0 1.25rem;
+            /* 20px / 16px */
+        }
+
+        a {
+            color: var(--color-secondary-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-accent-green);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5625rem;
+            /* 12px 25px */
+            border-radius: 0.3125rem;
+            /* 5px */
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent-green);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background-color: #388E3C;
+            /* Slightly darker green */
+            transform: translateY(-0.125rem);
+            /* 2px */
+        }
+
+        .btn-secondary {
+            background-color: var(--color-secondary-blue);
+            color: var(--color-white);
+            font-size: 0.9em;
+            padding: 0.5rem 0.9375rem;
+            /* 8px 15px */
+        }
+
+        .btn-secondary:hover {
+            background-color: #2854A3;
+            /* Slightly darker blue */
+            transform: translateY(-0.0625rem);
+            /* 1px */
+        }
+
+        /* Header (consistent across pages) */
+        .main-header {
+            background-color: var(--color-white);
+            padding: 0.9375rem 0;
+            /* 15px */
+            border-bottom: 0.0625rem solid var(--color-light-gray);
+            /* 1px */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 300px;
+        }
+
+        @media(max-width: 1000px) {
+            .logo {
+                width: 180px;
+            }
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .main-nav li {
+            margin-left: 1.875rem;
+            /* 30px */
+        }
+
+        .nav-link {
+            font-weight: 600;
+            font-size: 1.05em;
+            color: var(--color-primary-dark);
+        }
+
+        .active-link{
+            color: var(--color-secondary-blue);
+        }
+
+        .nav-link:hover{
+            color: var(--color-secondary-blue);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 1.5625rem;
+            /* 25px */
+            height: 0.1875rem;
+            /* 3px */
+            background-color: var(--color-primary-dark);
+            margin: 0.3125rem 0;
+            /* 5px */
+            transition: all 0.3s ease;
+        }
+
+        /* Contact Page Specific Styles */
+        .contact-page-main {
+            padding: 3.75rem 0;
+            /* 60px */
+            background-color: var(--color-light-gray);
+        }
+
+        .contact-section {
+            background-color: var(--color-white);
+            padding: 2.5rem;
+            /* 40px */
+            border-radius: 0.5rem;
+            /* 8px */
+            box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.08);
+            /* 0 4px 15px */
+            margin-bottom: 2.5rem;
+            /* 40px */
+            text-align: center;
+            /* Center content within section */
+        }
+
+        .contact-section h2 {
+            font-size: 2em;
+            color: var(--color-primary-dark);
+            margin-bottom: 1.5625rem;
+            /* 25px */
+            position: relative;
+            padding-bottom: 0.625rem;
+            /* 10px */
+        }
+
+        .contact-section h2::after {
+            content: '';
+            display: block;
+            width: 3.75rem;
+            /* 60px */
+            height: 0.1875rem;
+            /* 3px */
+            background-color: var(--color-accent-green);
+            margin: 0.625rem auto 0;
+            /* 10px */
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.875rem;
+            /* 30px */
+            margin-bottom: 2.5rem;
+            /* 40px */
+        }
+
+        .info-item {
+            flex: 1 1 calc(33% - 1.25rem);
+            /* Roughly 3 items per row, adjusting for gap */
+            min-width: 15.625rem;
+            /* 250px */
+            background-color: var(--color-light-gray);
+            padding: 1.25rem;
+            /* 20px */
+            border-radius: 0.3125rem;
+            /* 5px */
+            text-align: center;
+        }
+
+        .info-item i {
+            font-size: 2.5rem;
+            /* 40px */
+            color: var(--color-secondary-blue);
+            margin-bottom: 0.625rem;
+            /* 10px */
+        }
+
+        .info-item p {
+            font-size: 1em;
+            color: var(--color-primary-dark);
+            margin-bottom: 0.3125rem;
+            /* 5px */
+        }
+
+        .info-item a {
+            font-size: 1em;
+            color: var(--color-secondary-blue);
+            word-break: break-all;
+            /* Ensures long emails/URLs don't overflow */
+        }
+
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 Aspect Ratio (height / width = 9 / 16 = 0.5625) */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: var(--color-light-gray);
+            /* Placeholder background */
+            border-radius: 0.5rem;
+            /* 8px */
+            margin-top: 2.5rem;
+            /* 40px */
+            margin-bottom: 2.5rem;
+            /* 40px */
+            box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.08);
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 0.5rem;
+            /* 8px */
+        }
+
+        .contact-form-wrapper {
+            max-width: 40rem;
+            /* 640px */
+            margin: 0 auto;
+            text-align: left;
+            /* Align form elements to left */
+        }
+
+        .contact-form-wrapper label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            /* 8px */
+            color: var(--color-primary-dark);
+        }
+
+        .contact-form-wrapper input[type="text"],
+        .contact-form-wrapper input[type="email"],
+        .contact-form-wrapper textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            /* 12px 16px */
+            margin-bottom: 1.25rem;
+            /* 20px */
+            border: 0.0625rem solid #BBBBBB;
+            /* 1px */
+            border-radius: 0.3125rem;
+            /* 5px */
+            font-size: 1em;
+            color: var(--color-primary-dark);
+            background-color: var(--color-white);
+            box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.05);
+            /* 0 1px 3px */
+        }
+
+        .contact-form-wrapper input:focus,
+        .contact-form-wrapper textarea:focus {
+            outline: none;
+            border-color: var(--color-secondary-blue);
+            box-shadow: 0 0 0 0.1875rem rgba(51, 102, 204, 0.2);
+            /* 3px */
+        }
+
+        .contact-form-wrapper textarea {
+            min-height: 7.5rem;
+            /* 120px */
+            resize: vertical;
+        }
+
+        .contact-form-wrapper button[type="submit"] {
+            width: auto;
+            /* Allow button to size naturally */
+            padding: 0.75rem 1.875rem;
+            /* 12px 30px */
+            display: block;
+            /* Make it a block element to center with margin auto */
+            margin: 0 auto;
+            /* Center the button */
+        }
+
+        .social-media-links {
+            margin-top: 2.5rem;
+            /* 40px */
+            text-align: center;
+        }
+
+        .social-media-links a {
+            font-size: 2.5rem;
+            /* 40px */
+            margin: 0 0.625rem;
+            /* 10px */
+            color: var(--color-primary-dark);
+            transition: color 0.3s ease;
+        }
+
+        .social-media-links a:hover {
+            color: var(--color-accent-green);
+        }
+
+
+        /* ===================================================
+============ FOOTER ================================ */
+        .main-footer {
+            background-color: var(--color-light-gray);
+            border-radius: 30px;
+            box-shadow: 0 0 10px var(--color-primary-dark);
+            margin: 20px 5%;
+            color: var(--color-white);
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .main-footer p {
+            color: var(--color-primary-dark);
+            font-size: 20px;
+        }
+
+        .main-footer .disclosure {
+            font-size: 0.85em;
+            color: var(--color-primary-dark);
+            margin-top: 15px;
+        }
+
+        .main-footer .disclosure a {
+            color: var(--color-accent-green);
+        }
+
+        .main-footer .footer-links {
+            margin-top: 20px;
+            color: var(--color-primary-dark);
+            font-weight: 600;
+        }
+
+        .main-footer .footer-links a {
+            font-weight: 600;
+            color: var(--color-primary-dark);
+            margin: 0 15px;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .main-footer .footer-links a:hover {
+            color: var(--color-secondary-blue);
+        }
+
+
+
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--color-white);
+                position: absolute;
+                top: 4.375rem;
+                /* 70px */
+                left: 0;
+                padding-bottom: 0.625rem;
+                /* 10px */
+                box-shadow: 0 0.3125rem 0.625rem rgba(0, 0, 0, 0.1);
+                /* 0 5px 10px */
+            }
+
+            .main-nav.active {
+                display: flex;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .main-nav li {
+                margin: 0;
+                border-bottom: 0.0625rem solid var(--color-light-gray);
+                /* 1px */
+            }
+
+            .main-nav a {
+                display: block;
+                padding: 0.9375rem 1.25rem;
+                /* 15px 20px */
+                text-align: center;
+                width: 100%;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .contact-section {
+                padding: 1.5rem;
+                /* 24px */
+            }
+
+            .contact-section h2 {
+                font-size: 1.6em;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                /* Stack info items on small screens */
+                gap: 1rem;
+                /* 16px */
+            }
+
+            .info-item {
+                min-width: unset;
+                /* Remove min-width constraint */
+                width: 100%;
+                /* Take full width */
+            }
+
+            .contact-form-wrapper {
+                max-width: 100%;
+            }
+
+            .social-media-links a {
+                font-size: 2rem;
+                /* 32px */
+            }
+
+            .main-footer .footer-links a {
+                display: block;
+                margin: 0.625rem 0;
+                /* 10px */
+            }
+        }
+
+        /* Optional: Hamburger icon animation */
+        .nav-toggle.open span:nth-child(1) {
+            transform: rotate(-45deg) translate(-0.3125rem, 0.375rem);
+            /* -5px, 6px */
+        }
+
+        .nav-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.open span:nth-child(3) {
+            transform: rotate(45deg) translate(-0.3125rem, -0.375rem);
+            /* -5px, -6px */
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <!-- =================================================================================
+     ======================== HEADER ============================== -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="./img/logo.png" class="logo" alt="eduPAL Logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="./trending_courses.html" class="nav-link">Trending Courses</a></li>
+                    <li><a href="./all_courses.html" class="nav-link">All Courses</a></li>
+                    <li><a href="https://ellibrary25.web.app" target="_blank" rel="noopener" class="nav-link">Pal Library</a></li>
+                    <li><a href="https://piacademi.web.app" target="_blank" rel="noopener" class="nav-link">Pi Academi</a></li>
+                    <li><a href="./about.html" class="nav-link">About</a></li>
+                    <li><a href="./contact.html" class="nav-link active-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!--  ================== HUMBURGGER =================================== -->
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+
+
+    <main class="contact-page-main">
+        <div class="container">
+            <section class="contact-section">
+                <h2>Get In Touch</h2>
+                <p>Have questions, feedback, or partnership inquiries? We'd love to hear from you!</p>
+
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>Email Us</p>
+                        <p><a href="mailto:info@elacademi.web.app">info@elacademi.web.app</a></p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Our Location</p>
+                        <p>Sunyani, Bono Region, Ghana</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <p>Business Hours</p>
+                        <p>Mon - Fri: 9:00 AM - 5:00 PM (GMT)</p>
+                    </div>
+                </div>
+
+
+
+                
+
+
+                <h3>Find Us on the Map</h3>
+                <div class="map-container">
+                    <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63308.352200535075!2d-2.452759936378879!3d7.379428984889661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdac92a170803d7%3A0x6b48d01bcca4224a!2sUniversity%20of%20Energy%20and%20Natural%20Resources!5e0!3m2!1sen!2sgh!4v1751599845226!5m2!1sen!2sgh"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+
+                <h3>Send Us a Message</h3>
+                <div class="contact-form-wrapper">
+                    <form action="YOUR_FORMSPREE_ENDPOINT" method="POST">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="_replyto" required placeholder="you@example.com">
+
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required placeholder="Inquiry about partnership">
+
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="6" required
+                            placeholder="Type your message here..."></textarea>
+
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="social-media-links">
+                    <h3>Connect With Us</h3>
+                    <a href="https://facebook.com/your-elacademi-page" rel="noopener" target="_blank"
+                        aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+                    <a href="https://twitter.com/your-elacademi-handle" rel="noopener" target="_blank"
+                        aria-label="Twitter"><i class="fab fa-twitter-square"></i></a>
+                    <a href="https://linkedin.com/company/your-elacademi-page" rel="noopener" target="_blank"
+                        aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://instagram.com/your-elacademi-handle" rel="noopener" target="_blank"
+                        aria-label="Instagram"><i class="fab fa-instagram-square"></i></a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+
+
+
+    <!-- =============================================================================
+     ================== FOOTER =============================================== -->
+    <footer class="main-footer">
+        <div class="container">
+            <img src="./img/logo.png" class="logo" alt="eduPAL Logo">
+            <p>&copy; <span id="current-year"></span> eduPAL. All rights reserved.</p>
+            <p class="disclosure">This site contains affiliate links. We may earn a commission if you make a purchase
+                through these links, at no extra cost to you. <a href="affiliate-disclosure.html">Learn more.</a></p>
+            <div class="footer-links">
+                <a href="./about.html">About Us</a>
+                <a href="./about.html#privacy-policy">Privacy Policy</a>
+                <a href="./about.html#terms-of-use">Terms of Service</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Mobile Navigation Toggle (reused from other pages)
+            const navToggle = document.querySelector('.nav-toggle');
+            const mainNav = document.querySelector('.main-nav');
+
+            if (navToggle && mainNav) {
+                navToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                    navToggle.classList.toggle('open');
+                });
+                mainNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                            navToggle.classList.remove('open');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
